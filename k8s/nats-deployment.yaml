@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nats
+  labels:
+    component: nats
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      component: nats
+  template:
+    metadata:
+      labels:
+        component: nats
+    spec:
+      containers:
+        - name: nats
+          image: nats
+          ports:
+            - containerPort: 4222

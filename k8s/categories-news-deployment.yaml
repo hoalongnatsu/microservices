@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: categories-service
+  labels:
+    component: categories-service
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      component: categories-service
+  template:
+    metadata:
+      labels:
+        component: categories-service
+    spec:
+      containers:
+        - name: categories-service
+          image: 080196/microservice
+          env:
+            - name: SERVICES
+              value: categories
+          envFrom:
+            - configMapRef:
+                name: microservice-cm
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: news-service
+  labels:
+    component: news-service
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      component: news-service
+  template:
+    metadata:
+      labels:
+        component: news-service
+    spec:
+      containers:
+        - name: news-service
+          image: 080196/microservice
+          env:
+            - name: SERVICES
+              value: news
+          envFrom:
+            - configMapRef:
+                name: microservice-cm
