@@ -1,0 +1,59 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": true,
+		"sourceMap": true,
+		"pretty": true,
+		"target": "es6",
+		"outDir": "dist",
+		"baseUrl": "./",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"types": [
+			"node"
+		],
+		"paths": {
+			"DB": [
+				"src/db/"
+			],
+			"DB/*": [
+				"src/db/*"
+			],
+			"Hooks": [
+				"src/hooks"
+			],
+			"Hooks/*": [
+				"src/hooks/*"
+			],
+			"Models": [
+				"src/models/"
+			],
+			"Models/*": [
+				"src/models/*"
+			],
+			"Routes": [
+				"src/routes/"
+			],
+			"Routes/*": [
+				"src/routes/*"
+			],
+			"Utils": [
+				"src/utils/"
+			],
+			"Utils/*": [
+				"src/utils/*"
+			]
+		}
+	},
+	"include": [
+		"./**/*"
+	],
+	"exclude": [
+		"node_modules/**/*",
+		"test"
+	],
+	"lib": ["es2018","es2017", "dom", "es2015", "ES2020.Promise"]
+}

@@ -1,0 +1,11 @@
+docker-compose.env
+docker-compose-dev.yml
+Dockerfile
+Dockerfile.dev
+node_modules
+.vscode
+pgdata
+config
+.editorconfig
+.eslintrc.js
+.gitignore

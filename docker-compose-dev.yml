@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+  microservice:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: microservice
+    env_file: docker-compose.env
+    command: " services/**/*.service.ts"
+    depends_on:
+      - nats
+      - redis
+      - db
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 3001:3001
+    networks:
+      - web-crm
+  nats:
+    image: nats
+    networks:
+      - web-crm
+  redis:
+    image: redis
+    networks:
+      - web-crm
+  db:
+    image: postgres:12
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - "pgdata:/var/lib/postgresql/data"
+    networks:
+      - web-crm
+
+volumes:
+  pgdata:
+
+networks:
+  web-crm: 
+    external:
+      name: web-crm
